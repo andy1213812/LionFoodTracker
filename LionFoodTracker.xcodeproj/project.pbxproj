@@ -1,0 +1,582 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E68D8252299D72AC0034240B /* LionFoodTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68D8251299D72AC0034240B /* LionFoodTrackerApp.swift */; };
+		E68D8254299D72AC0034240B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68D8253299D72AC0034240B /* ContentView.swift */; };
+		E68D8256299D72AD0034240B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E68D8255299D72AD0034240B /* Assets.xcassets */; };
+		E68D8259299D72AD0034240B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E68D8258299D72AD0034240B /* Preview Assets.xcassets */; };
+		E68D8263299D72AD0034240B /* LionFoodTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68D8262299D72AD0034240B /* LionFoodTrackerTests.swift */; };
+		E68D826D299D72AE0034240B /* LionFoodTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68D826C299D72AE0034240B /* LionFoodTrackerUITests.swift */; };
+		E68D826F299D72AE0034240B /* LionFoodTrackerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68D826E299D72AE0034240B /* LionFoodTrackerUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E68D825F299D72AD0034240B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E68D8246299D72AB0034240B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E68D824D299D72AC0034240B;
+			remoteInfo = LionFoodTracker;
+		};
+		E68D8269299D72AE0034240B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E68D8246299D72AB0034240B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E68D824D299D72AC0034240B;
+			remoteInfo = LionFoodTracker;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E68D824E299D72AC0034240B /* LionFoodTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LionFoodTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E68D8251299D72AC0034240B /* LionFoodTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LionFoodTrackerApp.swift; sourceTree = "<group>"; };
+		E68D8253299D72AC0034240B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E68D8255299D72AD0034240B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E68D8258299D72AD0034240B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E68D825E299D72AD0034240B /* LionFoodTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LionFoodTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E68D8262299D72AD0034240B /* LionFoodTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LionFoodTrackerTests.swift; sourceTree = "<group>"; };
+		E68D8268299D72AE0034240B /* LionFoodTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LionFoodTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E68D826C299D72AE0034240B /* LionFoodTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LionFoodTrackerUITests.swift; sourceTree = "<group>"; };
+		E68D826E299D72AE0034240B /* LionFoodTrackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LionFoodTrackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E68D824B299D72AC0034240B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E68D825B299D72AD0034240B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E68D8265299D72AE0034240B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E68D8245299D72AB0034240B = {
+			isa = PBXGroup;
+			children = (
+				E68D8250299D72AC0034240B /* LionFoodTracker */,
+				E68D8261299D72AD0034240B /* LionFoodTrackerTests */,
+				E68D826B299D72AE0034240B /* LionFoodTrackerUITests */,
+				E68D824F299D72AC0034240B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E68D824F299D72AC0034240B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E68D824E299D72AC0034240B /* LionFoodTracker.app */,
+				E68D825E299D72AD0034240B /* LionFoodTrackerTests.xctest */,
+				E68D8268299D72AE0034240B /* LionFoodTrackerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E68D8250299D72AC0034240B /* LionFoodTracker */ = {
+			isa = PBXGroup;
+			children = (
+				E68D8251299D72AC0034240B /* LionFoodTrackerApp.swift */,
+				E68D8253299D72AC0034240B /* ContentView.swift */,
+				E68D8255299D72AD0034240B /* Assets.xcassets */,
+				E68D8257299D72AD0034240B /* Preview Content */,
+			);
+			path = LionFoodTracker;
+			sourceTree = "<group>";
+		};
+		E68D8257299D72AD0034240B /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				E68D8258299D72AD0034240B /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E68D8261299D72AD0034240B /* LionFoodTrackerTests */ = {
+			isa = PBXGroup;
+			children = (
+				E68D8262299D72AD0034240B /* LionFoodTrackerTests.swift */,
+			);
+			path = LionFoodTrackerTests;
+			sourceTree = "<group>";
+		};
+		E68D826B299D72AE0034240B /* LionFoodTrackerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				E68D826C299D72AE0034240B /* LionFoodTrackerUITests.swift */,
+				E68D826E299D72AE0034240B /* LionFoodTrackerUITestsLaunchTests.swift */,
+			);
+			path = LionFoodTrackerUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E68D824D299D72AC0034240B /* LionFoodTracker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E68D8272299D72AE0034240B /* Build configuration list for PBXNativeTarget "LionFoodTracker" */;
+			buildPhases = (
+				E68D824A299D72AC0034240B /* Sources */,
+				E68D824B299D72AC0034240B /* Frameworks */,
+				E68D824C299D72AC0034240B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LionFoodTracker;
+			productName = LionFoodTracker;
+			productReference = E68D824E299D72AC0034240B /* LionFoodTracker.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E68D825D299D72AD0034240B /* LionFoodTrackerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E68D8275299D72AE0034240B /* Build configuration list for PBXNativeTarget "LionFoodTrackerTests" */;
+			buildPhases = (
+				E68D825A299D72AD0034240B /* Sources */,
+				E68D825B299D72AD0034240B /* Frameworks */,
+				E68D825C299D72AD0034240B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E68D8260299D72AD0034240B /* PBXTargetDependency */,
+			);
+			name = LionFoodTrackerTests;
+			productName = LionFoodTrackerTests;
+			productReference = E68D825E299D72AD0034240B /* LionFoodTrackerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E68D8267299D72AE0034240B /* LionFoodTrackerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E68D8278299D72AE0034240B /* Build configuration list for PBXNativeTarget "LionFoodTrackerUITests" */;
+			buildPhases = (
+				E68D8264299D72AE0034240B /* Sources */,
+				E68D8265299D72AE0034240B /* Frameworks */,
+				E68D8266299D72AE0034240B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E68D826A299D72AE0034240B /* PBXTargetDependency */,
+			);
+			name = LionFoodTrackerUITests;
+			productName = LionFoodTrackerUITests;
+			productReference = E68D8268299D72AE0034240B /* LionFoodTrackerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E68D8246299D72AB0034240B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					E68D824D299D72AC0034240B = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					E68D825D299D72AD0034240B = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = E68D824D299D72AC0034240B;
+					};
+					E68D8267299D72AE0034240B = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = E68D824D299D72AC0034240B;
+					};
+				};
+			};
+			buildConfigurationList = E68D8249299D72AB0034240B /* Build configuration list for PBXProject "LionFoodTracker" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E68D8245299D72AB0034240B;
+			productRefGroup = E68D824F299D72AC0034240B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E68D824D299D72AC0034240B /* LionFoodTracker */,
+				E68D825D299D72AD0034240B /* LionFoodTrackerTests */,
+				E68D8267299D72AE0034240B /* LionFoodTrackerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E68D824C299D72AC0034240B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E68D8259299D72AD0034240B /* Preview Assets.xcassets in Resources */,
+				E68D8256299D72AD0034240B /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E68D825C299D72AD0034240B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E68D8266299D72AE0034240B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E68D824A299D72AC0034240B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E68D8254299D72AC0034240B /* ContentView.swift in Sources */,
+				E68D8252299D72AC0034240B /* LionFoodTrackerApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E68D825A299D72AD0034240B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E68D8263299D72AD0034240B /* LionFoodTrackerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E68D8264299D72AE0034240B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E68D826D299D72AE0034240B /* LionFoodTrackerUITests.swift in Sources */,
+				E68D826F299D72AE0034240B /* LionFoodTrackerUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E68D8260299D72AD0034240B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E68D824D299D72AC0034240B /* LionFoodTracker */;
+			targetProxy = E68D825F299D72AD0034240B /* PBXContainerItemProxy */;
+		};
+		E68D826A299D72AE0034240B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E68D824D299D72AC0034240B /* LionFoodTracker */;
+			targetProxy = E68D8269299D72AE0034240B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		E68D8270299D72AE0034240B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E68D8271299D72AE0034240B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E68D8273299D72AE0034240B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"LionFoodTracker/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = andychen.LionFoodTracker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E68D8274299D72AE0034240B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"LionFoodTracker/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = andychen.LionFoodTracker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		E68D8276299D72AE0034240B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = andychen.LionFoodTrackerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LionFoodTracker.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LionFoodTracker";
+			};
+			name = Debug;
+		};
+		E68D8277299D72AE0034240B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = andychen.LionFoodTrackerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LionFoodTracker.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LionFoodTracker";
+			};
+			name = Release;
+		};
+		E68D8279299D72AE0034240B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = andychen.LionFoodTrackerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LionFoodTracker;
+			};
+			name = Debug;
+		};
+		E68D827A299D72AE0034240B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = andychen.LionFoodTrackerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LionFoodTracker;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E68D8249299D72AB0034240B /* Build configuration list for PBXProject "LionFoodTracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E68D8270299D72AE0034240B /* Debug */,
+				E68D8271299D72AE0034240B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E68D8272299D72AE0034240B /* Build configuration list for PBXNativeTarget "LionFoodTracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E68D8273299D72AE0034240B /* Debug */,
+				E68D8274299D72AE0034240B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E68D8275299D72AE0034240B /* Build configuration list for PBXNativeTarget "LionFoodTrackerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E68D8276299D72AE0034240B /* Debug */,
+				E68D8277299D72AE0034240B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E68D8278299D72AE0034240B /* Build configuration list for PBXNativeTarget "LionFoodTrackerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E68D8279299D72AE0034240B /* Debug */,
+				E68D827A299D72AE0034240B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E68D8246299D72AB0034240B /* Project object */;
+}
