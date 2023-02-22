@@ -14,6 +14,7 @@
 		E68D8263299D72AD0034240B /* LionFoodTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68D8262299D72AD0034240B /* LionFoodTrackerTests.swift */; };
 		E68D826D299D72AE0034240B /* LionFoodTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68D826C299D72AE0034240B /* LionFoodTrackerUITests.swift */; };
 		E68D826F299D72AE0034240B /* LionFoodTrackerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68D826E299D72AE0034240B /* LionFoodTrackerUITestsLaunchTests.swift */; };
+		E68D82BA299E09DC0034240B /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = E68D82B9299E09DC0034240B /* SwiftUICharts */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,8 @@
 		E68D8268299D72AE0034240B /* LionFoodTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LionFoodTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E68D826C299D72AE0034240B /* LionFoodTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LionFoodTrackerUITests.swift; sourceTree = "<group>"; };
 		E68D826E299D72AE0034240B /* LionFoodTrackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LionFoodTrackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E68D827B299D8D380034240B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		E68D82B3299E09360034240B /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = System/Library/Frameworks/Charts.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E68D82BA299E09DC0034240B /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +82,7 @@
 				E68D8261299D72AD0034240B /* LionFoodTrackerTests */,
 				E68D826B299D72AE0034240B /* LionFoodTrackerUITests */,
 				E68D824F299D72AC0034240B /* Products */,
+				E68D82B2299E09350034240B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -94,6 +99,7 @@
 		E68D8250299D72AC0034240B /* LionFoodTracker */ = {
 			isa = PBXGroup;
 			children = (
+				E68D827B299D8D380034240B /* Info.plist */,
 				E68D8251299D72AC0034240B /* LionFoodTrackerApp.swift */,
 				E68D8253299D72AC0034240B /* ContentView.swift */,
 				E68D8255299D72AD0034240B /* Assets.xcassets */,
@@ -127,6 +133,14 @@
 			path = LionFoodTrackerUITests;
 			sourceTree = "<group>";
 		};
+		E68D82B2299E09350034240B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E68D82B3299E09360034240B /* Charts.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,6 +157,9 @@
 			dependencies = (
 			);
 			name = LionFoodTracker;
+			packageProductDependencies = (
+				E68D82B9299E09DC0034240B /* SwiftUICharts */,
+			);
 			productName = LionFoodTracker;
 			productReference = E68D824E299D72AC0034240B /* LionFoodTracker.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +232,9 @@
 				Base,
 			);
 			mainGroup = E68D8245299D72AB0034240B;
+			packageReferences = (
+				E68D82B8299E09DC0034240B /* XCRemoteSwiftPackageReference "ChartView" */,
+			);
 			productRefGroup = E68D824F299D72AC0034240B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -345,6 +365,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				"INFOPLIST_FILE[sdk=*]" = "Privacy - This app uses the camera to take photos for food tracking purposes.";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -399,6 +420,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				"INFOPLIST_FILE[sdk=*]" = "Privacy - This app uses the camera to take photos for food tracking purposes.";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -417,8 +439,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"LionFoodTracker/Preview Content\"";
+				DEVELOPMENT_TEAM = CD9755JQTD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LionFoodTracker/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need to access the camera";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We Need to access your photo album";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -445,8 +471,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"LionFoodTracker/Preview Content\"";
+				DEVELOPMENT_TEAM = CD9755JQTD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LionFoodTracker/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need to access the camera";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We Need to access your photo album";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -577,6 +607,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E68D82B8299E09DC0034240B /* XCRemoteSwiftPackageReference "ChartView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppPear/ChartView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E68D82B9299E09DC0034240B /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E68D82B8299E09DC0034240B /* XCRemoteSwiftPackageReference "ChartView" */;
+			productName = SwiftUICharts;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E68D8246299D72AB0034240B /* Project object */;
 }
