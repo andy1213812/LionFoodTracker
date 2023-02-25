@@ -10,7 +10,7 @@ import AVFoundation
 import UIKit
 import Charts
 import Photos
-
+import WebKit
 
 struct ProfileView: View {
     var body: some View {
@@ -357,6 +357,7 @@ struct AboutView_Previews: PreviewProvider {
 }
 
 struct FoodView: View {
+    @State private var webView = WKWebView()
     var body: some View {
         VStack {
             Spacer()
@@ -366,7 +367,9 @@ struct FoodView: View {
             Spacer()
             HStack(spacing: 30) {
                 Button(action: {
-                    // Handle South button action here
+                    if let url = URL(string: "http://menu.hfs.psu.edu/shortmenu.aspx?sName=Penn+State+Housing+and+Food+Services&locationNum=17&locationName=South+Food+District&naFlag=1#middle-content") {
+                           UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                       }
                 }) {
                     Text("South")
                         .font(.headline)
@@ -380,7 +383,9 @@ struct FoodView: View {
                 )
                 
                 Button(action: {
-                    // Handle East button action here
+                    if let url = URL(string: "http://menu.hfs.psu.edu/shortmenu.aspx?sName=Penn+State+Housing+and+Food+Services&locationNum=11&locationName=East+Food+District&naFlag=1#middle-content"){
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    }
                 }) {
                     Text("East")
                         .font(.headline)
@@ -394,7 +399,9 @@ struct FoodView: View {
                 )
                 
                 Button(action: {
-                    // Handle North button action here
+                    if let url = URL(string: "http://menu.hfs.psu.edu/shortmenu.aspx?sName=Penn+State+Housing+and+Food+Services&locationNum=17&locationName=North+Food+District&naFlag=1#middle-content"){
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    }
                 }) {
                     Text("North")
                         .font(.headline)
@@ -408,7 +415,9 @@ struct FoodView: View {
                 )
                 
                 Button(action: {
-                    // Handle West button action here
+                    if let url = URL(string: "http://menu.hfs.psu.edu/shortmenu.aspx?sName=Penn+State+Housing+and+Food+Services&locationNum=17&locationName=West+Food+District&naFlag=1#middle-content"){
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    }
                 }) {
                     Text("West")
                         .font(.headline)
@@ -422,7 +431,9 @@ struct FoodView: View {
                 )
                 
                 Button(action: {
-                    // Handle Pollock button action here
+                    if let url = URL(string: "http://menu.hfs.psu.edu/shortmenu.aspx?sName=Penn+State+Housing+and+Food+Services&locationNum=17&locationName=pollock+Food+District&naFlag=1#middle-content"){
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    }
                 }) {
                     Text("Pollock")
                         .font(.headline)
@@ -440,6 +451,7 @@ struct FoodView: View {
         .background(Color(UIColor(hex: "#C7F6B6")))
         
     }
+
 }
 
 
