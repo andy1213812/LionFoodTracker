@@ -11,6 +11,7 @@ import UIKit
 import Charts
 import Photos
 
+
 struct ProfileView: View {
     var body: some View {
         Text("Profile Page")
@@ -345,7 +346,7 @@ struct AboutView: View {
             Spacer()
         }
         .navigationBarTitle("About")
-        .background(Color(UIColor(hex: "#705b49")))
+        .background(Color(UIColor(hex: "#C7F6B6")))
     }
 }
 
@@ -374,7 +375,8 @@ struct ContentView: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(maxWidth: 300, maxHeight: 300, alignment: .bottom)
                     Spacer()
-                    
+    
+                        .padding(.horizontal)
                     Spacer()
                         .frame(height: .infinity)
                     ZStack {
@@ -423,9 +425,16 @@ struct ContentView: View {
                                     .background(Circle().foregroundColor(Color(UIColor(hex: "#eea47f"))))
                                     .clipShape(Circle())
                             }
-                            
                             .padding(.bottom, 20)
-           
+                            NavigationLink(destination: FoodView()) { // new button
+                                Image(systemName: "leaf.arrow.circlepath")
+                                .font(.title)
+                                .foregroundColor(.white)
+                                .frame(width: 60, height: 60)
+                                .background(Circle().foregroundColor(Color(UIColor(hex: "#eea47f"))))
+                                .clipShape(Circle())
+                            }
+                            .padding(.bottom, 20)
                             Spacer()
                         } /// Close of HStack
                     }
@@ -436,7 +445,7 @@ struct ContentView: View {
                             .font(.system(size: 30, weight: .bold, design: .default))
                             .foregroundColor(.black)
                             .frame(maxWidth: .infinity, alignment: .center)
-                            .background(Color(UIColor(hex: "#D5CCC4")))
+                            .background(Color(UIColor(hex: "#C7F6B6")))
                             .navigationBarTitleDisplayMode(.inline)
                             .ignoresSafeArea()
                             .sheet(isPresented: $isShowingLogin) {
