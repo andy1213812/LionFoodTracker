@@ -356,6 +356,92 @@ struct AboutView_Previews: PreviewProvider {
     }
 }
 
+struct FoodView: View {
+    var body: some View {
+        VStack {
+            Spacer()
+            Text("Choose a direction:")
+                .font(.title)
+                .fontWeight(.bold)
+            Spacer()
+            HStack(spacing: 30) {
+                Link(destination: URL(string: "http://menu.hfs.psu.edu/shortmenu.aspx?sName=Penn+State+Housing+and+Food+Services&locationNum=17&locationName=South+Food+District&naFlag=1#middle-content")!) {
+                    Button(action: {
+                        // Handle South button action here
+                    }) {
+                        Text("South")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .padding(.vertical, 10)
+                            .padding(.horizontal, 25)
+                    }
+                }
+                .background(
+                    RoundedRectangle(cornerRadius: 25)
+                        .foregroundColor(.green)
+                )
+                
+                Button(action: {
+                    // Handle East button action here
+                }) {
+                    Text("East")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding(.vertical, 10)
+                        .padding(.horizontal, 25)
+                }
+                .background(
+                    RoundedRectangle(cornerRadius: 25)
+                        .foregroundColor(.orange)
+                )
+                
+                Button(action: {
+                    // Handle North button action here
+                }) {
+                    Text("North")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding(.vertical, 10)
+                        .padding(.horizontal, 25)
+                }
+                .background(
+                    RoundedRectangle(cornerRadius: 25)
+                        .foregroundColor(.blue)
+                )
+                
+                Button(action: {
+                    // Handle West button action here
+                }) {
+                    Text("West")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding(.vertical, 10)
+                        .padding(.horizontal, 25)
+                }
+                .background(
+                    RoundedRectangle(cornerRadius: 25)
+                        .foregroundColor(.purple)
+                )
+                
+                Button(action: {
+                    // Handle Pollock button action here
+                }) {
+                    Text("p o l  l o ck")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding(.vertical, 10)
+                        .padding(.horizontal, 25)
+                }
+                .background(
+                    RoundedRectangle(cornerRadius: 25)
+                        .foregroundColor(.red)
+                )
+            }
+            Spacer()
+        }
+        .background(Color(UIColor(hex: "#C7F6B6")))
+    }
+}
 
 
 
@@ -425,6 +511,7 @@ struct ContentView: View {
                                     .background(Circle().foregroundColor(Color(UIColor(hex: "#eea47f"))))
                                     .clipShape(Circle())
                             }
+                            .padding(.trailing, 30)
                             .padding(.bottom, 20)
                             NavigationLink(destination: FoodView()) { // new button
                                 Image(systemName: "leaf.arrow.circlepath")
