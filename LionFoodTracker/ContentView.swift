@@ -365,16 +365,14 @@ struct FoodView: View {
                 .fontWeight(.bold)
             Spacer()
             HStack(spacing: 30) {
-                Link(destination: URL(string: "http://menu.hfs.psu.edu/shortmenu.aspx?sName=Penn+State+Housing+and+Food+Services&locationNum=17&locationName=South+Food+District&naFlag=1#middle-content")!) {
-                    Button(action: {
-                        // Handle South button action here
-                    }) {
-                        Text("South")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .padding(.vertical, 10)
-                            .padding(.horizontal, 25)
-                    }
+                Button(action: {
+                    // Handle South button action here
+                }) {
+                    Text("South")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding(.vertical, 10)
+                        .padding(.horizontal, 25)
                 }
                 .background(
                     RoundedRectangle(cornerRadius: 25)
@@ -426,7 +424,7 @@ struct FoodView: View {
                 Button(action: {
                     // Handle Pollock button action here
                 }) {
-                    Text("p o l  l o ck")
+                    Text("Pollock")
                         .font(.headline)
                         .foregroundColor(.white)
                         .padding(.vertical, 10)
@@ -440,6 +438,7 @@ struct FoodView: View {
             Spacer()
         }
         .background(Color(UIColor(hex: "#C7F6B6")))
+        
     }
 }
 
