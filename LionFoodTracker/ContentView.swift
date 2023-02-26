@@ -327,31 +327,16 @@ struct FoodWasteItem: Identifiable {
 ///
 ///
 
-struct nutritionInfo: Decodable {
-    let totalCalories: Double
-    let totalFat: Double
-    let totalCarbohydrates: Double
-    let totalProtein: Double
-    let totalSugar: Double
-}
+
+
+
+
 
 struct NutritionView: View {
-    let nutritionInfo: nutritionInfo
+    @Binding var nutritionInfo: String
 
     var body: some View {
-        VStack {
-            Text("Nutrition Info")
-                .font(.largeTitle)
-                .padding()
-
-            List {
-                Text("Total Calories: \(nutritionInfo.totalCalories)")
-                Text("Total Fat: \(nutritionInfo.totalFat)")
-                Text("Total Carbohydrates: \(nutritionInfo.totalCarbohydrates)")
-                Text("Total Protein: \(nutritionInfo.totalProtein)")
-                Text("Total Sugar: \(nutritionInfo.totalSugar)")
-            }
-        }
+        Text(nutritionInfo)
     }
 }
 
@@ -360,8 +345,7 @@ struct NutritionView: View {
 struct AboutView: View {
     @State private var foodText: String = ""
     @State private var nutritionInfo: String = ""
-
-    @State private var showingNutrition = false // define the `showingNutrition` variable
+    @State private var showingNutrition = false
 
     var body: some View {
         VStack {
@@ -378,10 +362,7 @@ struct AboutView: View {
             Spacer()
 
             Button(action: {
-                let headers = [
-                    "X-RapidAPI-Key": "584781877amsh414a02f15f60592p112f38jsn5f7f037cb5a0",
-                    "X-RapidAPI-Host": "nutrition-by-api-ninjas.p.rapidapi.com"
-                ]
+                let headers = [                    "X-RapidAPI-Key": "584781877amsh414a02f15f60592p112f38jsn5f7f037cb5a0",                    "X-RapidAPI-Host": "nutrition-by-api-ninjas.p.rapidapi.com"                ]
 
                 let foodQuery = foodText.replacingOccurrences(of: " ", with: "%20")
                 let request = NSMutableURLRequest(url: NSURL(string: "https://nutrition-by-api-ninjas.p.rapidapi.com/v1/nutrition?query=\(foodQuery)")! as URL,
@@ -390,20 +371,18 @@ struct AboutView: View {
                 request.httpMethod = "GET"
                 request.allHTTPHeaderFields = headers
 
-                let task = URLSession.shared.dataTask(with: request) { data, response, error in
-                    if let data = data {
-                        let decoder = JSONDecoder()
-                        do {
-                            let nutritionInfo = try decoder.decode(nutritionInfo.self, from: data)
-                            self.nutritionInfo = nutritionInfo.description
-                        } catch {
-                            print(error.localizedDescription)
-                        }
-                    } else if let error = error {
-                        print(error.localizedDescription)
+                let session = URLSession.shared
+                let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+                    if (error != nil) {
+                        print("error")
+                    } else {
+                        let httpResponse = response as? HTTPURLResponse
+                        print(httpResponse)
+                        nutritionInfo = String(data: data!, encoding: .utf8)!
+                        showingNutrition = true
                     }
-                }
-                task.resume()
+                })
+                dataTask.resume()
 
             }) {
                 Text("Submit")
@@ -424,11 +403,10 @@ struct AboutView: View {
         .background(Color.white)
         .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $showingNutrition) {
-            NutritionView(nutritionInfo: $nutritionInfo) // pass the `nutritionInfo` variable to the child view
+            NutritionView(nutritionInfo: $nutritionInfo)
         }
     }
 }
-
 
 
 
@@ -607,7 +585,7 @@ struct ContentView: View {
                                     .background(Circle().foregroundColor(Color(UIColor(hex: "#eea47f"))))
                                     .clipShape(Circle())
                             }
-                            .padding(.trailing, 30)
+                           
                             .padding(.bottom, 20)
                             Spacer()
                             
