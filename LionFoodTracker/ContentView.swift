@@ -324,10 +324,44 @@ struct FoodWasteItem: Identifiable {
 }
 
 /// Food Waste ^^^
+///
+///
+
+struct nutritionInfo: Decodable {
+    let totalCalories: Double
+    let totalFat: Double
+    let totalCarbohydrates: Double
+    let totalProtein: Double
+    let totalSugar: Double
+}
+
+struct NutritionView: View {
+    let nutritionInfo: nutritionInfo
+
+    var body: some View {
+        VStack {
+            Text("Nutrition Info")
+                .font(.largeTitle)
+                .padding()
+
+            List {
+                Text("Total Calories: \(nutritionInfo.totalCalories)")
+                Text("Total Fat: \(nutritionInfo.totalFat)")
+                Text("Total Carbohydrates: \(nutritionInfo.totalCarbohydrates)")
+                Text("Total Protein: \(nutritionInfo.totalProtein)")
+                Text("Total Sugar: \(nutritionInfo.totalSugar)")
+            }
+        }
+    }
+}
+
+
 
 struct AboutView: View {
     @State private var foodText: String = ""
-    @State private var isSubmitted = false
+    @State private var nutritionInfo: String = ""
+
+    @State private var showingNutrition = false // define the `showingNutrition` variable
 
     var body: some View {
         VStack {
@@ -341,27 +375,61 @@ struct AboutView: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
 
+            Spacer()
+
             Button(action: {
-                isSubmitted = true
+                let headers = [
+                    "X-RapidAPI-Key": "584781877amsh414a02f15f60592p112f38jsn5f7f037cb5a0",
+                    "X-RapidAPI-Host": "nutrition-by-api-ninjas.p.rapidapi.com"
+                ]
+
+                let foodQuery = foodText.replacingOccurrences(of: " ", with: "%20")
+                let request = NSMutableURLRequest(url: NSURL(string: "https://nutrition-by-api-ninjas.p.rapidapi.com/v1/nutrition?query=\(foodQuery)")! as URL,
+                                                    cachePolicy: .useProtocolCachePolicy,
+                                                    timeoutInterval: 10.0)
+                request.httpMethod = "GET"
+                request.allHTTPHeaderFields = headers
+
+                let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                    if let data = data {
+                        let decoder = JSONDecoder()
+                        do {
+                            let nutritionInfo = try decoder.decode(nutritionInfo.self, from: data)
+                            self.nutritionInfo = nutritionInfo.description
+                        } catch {
+                            print(error.localizedDescription)
+                        }
+                    } else if let error = error {
+                        print(error.localizedDescription)
+                    }
+                }
+                task.resume()
+
             }) {
                 Text("Submit")
-                    .font(.title)
-                    .foregroundColor(.white)
-                    .frame(width: 200, height: 60)
+                    .frame(width: 200, height: 50)
                     .background(Color.blue)
-                    .cornerRadius(30)
+                    .foregroundColor(.white)
+                    .cornerRadius(25)
                     .padding()
-            }
-
-            if isSubmitted {
-                Text("You submitted: \(foodText)")
             }
 
             Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .navigationBarTitle("Food Tracker")
+        .background(Color.white)
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationViewStyle(StackNavigationViewStyle())
+        .background(Color.white)
+        .navigationBarTitleDisplayMode(.inline)
+        .sheet(isPresented: $showingNutrition) {
+            NutritionView(nutritionInfo: $nutritionInfo) // pass the `nutritionInfo` variable to the child view
+        }
     }
 }
+
+
 
 
 
@@ -476,6 +544,8 @@ struct ContentView: View {
     @State private var isShowingLogin = false
     ///@State private var isShowingSignup = false
     @State private var selectedImage: UIImage?
+    @State private var showingNutrition = false
+
     
 
     var body: some View {
@@ -539,6 +609,9 @@ struct ContentView: View {
                             }
                             .padding(.trailing, 30)
                             .padding(.bottom, 20)
+                            Spacer()
+                            
+                            
                             NavigationLink(destination: FoodView()) { // new button
                                 Image(systemName: "leaf.arrow.circlepath")
                                 .font(.title)
