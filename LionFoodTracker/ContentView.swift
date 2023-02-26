@@ -11,6 +11,7 @@ import UIKit
 import Charts
 import Photos
 import WebKit
+import Foundation
 
 struct ProfileView: View {
     var body: some View {
@@ -325,30 +326,44 @@ struct FoodWasteItem: Identifiable {
 /// Food Waste ^^^
 
 struct AboutView: View {
+    @State private var foodText: String = ""
+    @State private var isSubmitted = false
+
     var body: some View {
         VStack {
-            Text("Our Purpose")
+            Text("Nutrition")
                 .font(.largeTitle)
-                .padding(.bottom, 20)
-            
-            Text("Our team is dedicated to reducing food waste in order to promote a more sustainable future. We believe that everyone can do their part to make a positive impact on the environment, and we're committed to making it easy and accessible for everyone to do so.")
-                .multilineTextAlignment(.center)
-                .padding(.horizontal, 20)
-                .padding(.bottom, 25)
-            Text("Team Members: ")
-                .font(.largeTitle)
-                .multilineTextAlignment(.center)
+                .padding()
 
-            Text("Andy Chen, Minseo Kim, Ling Qiu, PeiDong liu, Jude Bislig, Britney Wang")
-                .multilineTextAlignment(.center)
-        
-            
+            Spacer()
+
+            TextField("Enter food", text: $foodText)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
+
+            Button(action: {
+                isSubmitted = true
+            }) {
+                Text("Submit")
+                    .font(.title)
+                    .foregroundColor(.white)
+                    .frame(width: 200, height: 60)
+                    .background(Color.blue)
+                    .cornerRadius(30)
+                    .padding()
+            }
+
+            if isSubmitted {
+                Text("You submitted: \(foodText)")
+            }
+
             Spacer()
         }
-        .navigationBarTitle("About")
-        .background(Color(UIColor(hex: "#C7F6B6")))
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
+
+
 
 struct AboutView_Previews: PreviewProvider {
     static var previews: some View {
