@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E64437AF29AC5E0B00208568 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E64437AE29AC5E0B00208568 /* Alamofire */; };
 		E68D8252299D72AC0034240B /* LionFoodTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68D8251299D72AC0034240B /* LionFoodTrackerApp.swift */; };
 		E68D8254299D72AC0034240B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68D8253299D72AC0034240B /* ContentView.swift */; };
 		E68D8256299D72AD0034240B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E68D8255299D72AD0034240B /* Assets.xcassets */; };
@@ -55,6 +56,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E68D82BA299E09DC0034240B /* SwiftUICharts in Frameworks */,
+				E64437AF29AC5E0B00208568 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,6 +161,7 @@
 			name = LionFoodTracker;
 			packageProductDependencies = (
 				E68D82B9299E09DC0034240B /* SwiftUICharts */,
+				E64437AE29AC5E0B00208568 /* Alamofire */,
 			);
 			productName = LionFoodTracker;
 			productReference = E68D824E299D72AC0034240B /* LionFoodTracker.app */;
@@ -234,6 +237,7 @@
 			mainGroup = E68D8245299D72AB0034240B;
 			packageReferences = (
 				E68D82B8299E09DC0034240B /* XCRemoteSwiftPackageReference "ChartView" */,
+				E64437AD29AC5E0B00208568 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = E68D824F299D72AC0034240B /* Products */;
 			projectDirPath = "";
@@ -609,6 +613,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		E64437AD29AC5E0B00208568 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		E68D82B8299E09DC0034240B /* XCRemoteSwiftPackageReference "ChartView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AppPear/ChartView.git";
@@ -620,6 +632,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		E64437AE29AC5E0B00208568 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E64437AD29AC5E0B00208568 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
 		E68D82B9299E09DC0034240B /* SwiftUICharts */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E68D82B8299E09DC0034240B /* XCRemoteSwiftPackageReference "ChartView" */;

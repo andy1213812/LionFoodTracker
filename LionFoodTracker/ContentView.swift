@@ -12,6 +12,7 @@ import Charts
 import Photos
 import WebKit
 import Foundation
+import Alamofire
 
 struct ProfileView: View {
     var body: some View {
@@ -137,7 +138,8 @@ struct CameraView: UIViewControllerRepresentable {
         
     }
 }
-struct ImagePicker: UIViewControllerRepresentable {
+/*
+struct Old_ImagePicker: UIViewControllerRepresentable {
     var sourceType: UIImagePickerController.SourceType
 
     // Add the following properties to allow the user to select an image from their photo library
@@ -185,6 +187,46 @@ struct ImagePicker: UIViewControllerRepresentable {
         }
     }
 }
+*/
+struct ImagePicker: UIViewControllerRepresentable {
+    @Environment(\.presentationMode) private var presentationMode
+    @Binding var selectedImage: UIImage?
+
+    class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+        let parent: ImagePicker
+
+        init(_ parent: ImagePicker) {
+            self.parent = parent
+        }
+
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            if let selectedImage = info[.originalImage] as? UIImage {
+                parent.selectedImage = selectedImage
+            }
+
+            parent.presentationMode.wrappedValue.dismiss()
+        }
+
+        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+            parent.presentationMode.wrappedValue.dismiss()
+        }
+    }
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+
+    func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = context.coordinator
+        return imagePicker
+    }
+
+    func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ImagePicker>) {
+
+    }
+}
+
 
 ///-----------------------Menu View-----------------------
 
@@ -201,6 +243,7 @@ struct CameraView_Previews: PreviewProvider {
 
 /// Food Waste --------------
 
+/*
 struct FoodWasteView: View {
     @State private var isShowingPhotoLibrary = false
     @State private var selectedImage: UIImage?
@@ -306,6 +349,131 @@ struct FoodWasteView: View {
         }
     }
 }
+*/
+
+/*struct LogMealFoodDish: Decodable {
+    let foodFamily: [String]?
+    
+    enum CodingKeys: String, CodingKey {
+        case foodFamily
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        if let foodFamilyArray = try? container.decode([String].self, forKey: .foodFamily) {
+            foodFamily = foodFamilyArray
+        } else {
+            let foodFamilyDict = try? container.decode([String: String].self, forKey: .foodFamily)
+            foodFamily = foodFamilyDict?.values.sorted()
+        }
+    }
+}
+*/
+
+struct LogMealFoodDish: Decodable {
+    let id: Int
+    let name: String
+    let prob: Double
+}
+
+struct FoodWasteView: View {
+    @State private var selectedImage: UIImage?
+    @State private var isShowingImagePicker = false
+    @State private var foodName = ""
+    @State private var showingFoodAlert = false
+
+    private let logmealAPIURL = "https://api.logmeal.es/v2/image/segmentation/complete"
+    private let logmealAPIToken = "109a2a272e2656b5f55c6f25e2d8202c746094a4"
+
+    var body: some View {
+        VStack {
+            if let image = selectedImage {
+                Image(uiImage: image)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .padding()
+
+                HStack {
+                    Button("Remove Image") {
+                        selectedImage = nil
+                        foodName = ""
+                    }
+                    .padding()
+
+                    Spacer()
+
+                    Button(action: {
+                        detectFoodDish()
+                    }, label: {
+                        Image(systemName: "plus.circle.fill")
+                            .resizable()
+                            .frame(width: 60, height: 60)
+                            .foregroundColor(Color.green)
+                    })
+                    .padding()
+                }
+
+                if !foodName.isEmpty {
+                    Text("Detected food: \(foodName)")
+                        .padding()
+                }
+            } else {
+                Button("Select Image") {
+                    self.isShowingImagePicker = true
+                }
+                .padding()
+                .sheet(isPresented: $isShowingImagePicker, onDismiss: {
+                    if let image = selectedImage {
+                        detectFoodDish()
+                    }
+                }) {
+                    ImagePicker(selectedImage: $selectedImage)
+                }
+            }
+
+            Spacer()
+        }
+        .navigationTitle("Food Waste")
+        .alert(isPresented: $showingFoodAlert) {
+            Alert(title: Text("Food Detected"), message: Text("Detected food: \(foodName)"), dismissButton: .default(Text("OK")))
+        }
+    }
+
+    private func detectFoodDish() {
+        guard let image = selectedImage, let imageData = image.jpegData(compressionQuality: 0.5) else {
+            print("Failed to convert image to data")
+            return
+        }
+
+        let headers = ["Authorization": "Bearer \(logmealAPIToken)"]
+
+        AF.upload(multipartFormData: { multipartFormData in
+            multipartFormData.append(imageData, withName: "image", fileName: "image.jpg", mimeType: "image/jpeg")
+        }, to: logmealAPIURL, headers: HTTPHeaders(headers))
+        .validate()
+        .responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                if let dict = value as? [String: Any], let foodFamily = dict["foodFamily"] as? [[String: Any]], let firstFood = foodFamily.first, let name = firstFood["name"] as? String {
+                    print("Detected food: \(name)")
+                    self.foodName = name
+                    self.showingFoodAlert = true
+                } else {
+                    print("No food detected")
+                }
+            case .failure(let error):
+                print("API request failed: \(error)")
+            }
+        }
+    }
+}
+
+
+
+
+
+
 
 
 
@@ -523,6 +691,7 @@ struct ContentView: View {
     ///@State private var isShowingSignup = false
     @State private var selectedImage: UIImage?
     @State private var showingNutrition = false
+    @State private var showingImagePicker = false
 
     
 
@@ -560,12 +729,8 @@ struct ContentView: View {
                                     .clipShape(Circle())
                             }
                             .padding(.trailing, 30)
-                
                             .padding(.bottom, 20)
-                            .sheet(isPresented: $CameraView) {
-                                ImagePicker(sourceType: .camera, selectedImage: $selectedImage)
-                            }
-    
+                            
                             NavigationLink(destination: FoodWasteView()) {
                                 Image(systemName: "trash")
                                     .font(.title)
@@ -575,8 +740,13 @@ struct ContentView: View {
                                     .clipShape(Circle())
                             }
                             .padding(.trailing, 30)
-                
                             .padding(.bottom, 20)
+                            .sheet(isPresented: $showingImagePicker) {
+                                ImagePicker(selectedImage: $selectedImage)
+                            }
+
+
+                            
                             NavigationLink(destination: AboutView()) {
                                 Image(systemName: "info.circle")
                                     .font(.title)
@@ -668,4 +838,5 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
 
