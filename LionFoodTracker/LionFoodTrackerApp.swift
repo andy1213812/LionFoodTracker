@@ -8,10 +8,22 @@
 import SwiftUI
 
 @main
-struct LionFoodTrackerApp: App {
+struct MyApp: App {
+    @State var isLoading = true
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if isLoading {
+                FancyLoadingView()
+                    .onAppear {
+                        // Put loading logic here
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                            isLoading = false
+                        }
+                    }
+            } else {
+                ContentView()
+            }
         }
     }
 }

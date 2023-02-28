@@ -14,6 +14,46 @@ import WebKit
 import Foundation
 import Alamofire
 
+
+struct FancyLoadingView: View {
+    let gradient = Gradient(colors: [.pink, .purple])
+    let lineWidth: CGFloat = 4
+    
+    @State private var isLoading = false
+    
+    var body: some View {
+        ZStack {
+            Color(UIColor(hex: "#e9ffe9")) // background color
+                .ignoresSafeArea()
+            
+            Circle()
+                .trim(from: 0, to: isLoading ? 1 : 0)
+                .stroke(LinearGradient(gradient: gradient, startPoint: .leading, endPoint: .trailing), lineWidth: lineWidth)
+                .rotationEffect(.degrees(-90))
+                .animation(Animation.easeInOut(duration: 2).delay(0.5).repeatForever(autoreverses: false))
+                .frame(width: 80, height: 80)
+            
+            Image(systemName: "leaf.arrow.circlepath")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 60, height: 60)
+                .foregroundColor(.green)
+                .rotationEffect(.degrees(isLoading ? 360 : 0))
+                .animation(Animation.linear(duration: 2).delay(0.5).repeatForever(autoreverses: false))
+        }
+        .onAppear {
+            isLoading = true
+        }
+    }
+}
+
+
+
+
+
+
+
+
 struct ProfileView: View {
     var body: some View {
         Text("Profile Page")
@@ -34,33 +74,31 @@ struct LoginView: View {
     @State private var loggedInUsername = ""
     @State private var errorMessage = ""
 
-    
     var body: some View {
         VStack {
             Image(systemName: "person.crop.circle.fill")
                 .font(.system(size: 80))
                 .foregroundColor(.gray)
 
-            
             TextField("Username", text: $username)
                 .padding()
-                .background(Color(UIColor(hex: "#fffff")))
+                .background(Color.white)
                 .cornerRadius(5.0)
                 .padding(.top, 30)
-            
+
             SecureField("Password", text: $password)
                 .padding()
-                .background(Color(UIColor(hex: "#fffff")))
+                .background(Color.white)
                 .cornerRadius(5.0)
                 .padding(.top, 10)
-            
+
             Button(action: {
                 isSuccessfulLogin = false
                 if username.isEmpty || password.isEmpty {
-                            isSuccessfulLogin = false
-                        } else {
-                            isSuccessfulLogin = true
-                        }
+                    isSuccessfulLogin = false
+                } else {
+                    isSuccessfulLogin = true
+                }
                 // Add authentication logic here
 
                 // Dismiss the keyboard
@@ -80,32 +118,33 @@ struct LoginView: View {
                     .cornerRadius(15.0)
             }
             .padding(.top, 30)
-            
+
             if isSuccessfulLogin {
-                            Text("Successfully logged in as \(name) !")
-                                .foregroundColor(.green)
-                                .padding(.top, 10)
-                            Button(action: {
-                                self.presentationMode.wrappedValue.dismiss()
-                            }) {
-                                Text("Go back")
-                            }
-                    
+                Text("Successfully logged in as \(name) !")
+                    .foregroundColor(.green)
+                    .padding(.top, 10)
+                    .background(Color.white)
+                Button(action: {
+                    self.presentationMode.wrappedValue.dismiss()
+                }) {
+                    Text("Go back")
                 }
+            }
             Spacer()
         }
         .padding()
         .onAppear {
-                    // Remove keyboard when the view appears
-                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                }
+            // Remove keyboard when the view appears
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        }
     }
 }
 
 
 
-/// ^^^ Login Page
 
+/// ^^^ Login Page
+/*
 struct CameraView: UIViewControllerRepresentable {
     func makeUIViewController(context: UIViewControllerRepresentableContext<CameraView>) -> UIImagePickerController {
         let imagePicker = UIImagePickerController()
@@ -138,6 +177,7 @@ struct CameraView: UIViewControllerRepresentable {
         
     }
 }
+ */
 /*
 struct Old_ImagePicker: UIViewControllerRepresentable {
     var sourceType: UIImagePickerController.SourceType
@@ -234,13 +274,13 @@ struct ImagePicker: UIViewControllerRepresentable {
 ///-----------------------Camera View-----------------------
 
 
-
+/*
 struct CameraView_Previews: PreviewProvider {
     static var previews: some View {
         CameraView()
     }
 }
-
+*/
 /// Food Waste --------------
 
 /*
@@ -377,6 +417,17 @@ struct LogMealFoodDish: Decodable {
     let prob: Double
 }
 
+struct BlueButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .padding()
+            .background(Color.blue)
+            .foregroundColor(.white)
+            .cornerRadius(10)
+            .scaleEffect(configuration.isPressed ? 0.9 : 1.0)
+    }
+}
+
 struct FoodWasteView: View {
     @State private var selectedImage: UIImage?
     @State private var isShowingImagePicker = false
@@ -418,11 +469,17 @@ struct FoodWasteView: View {
                     Text("Detected food: \(foodName)")
                         .padding()
                 }
+                
+                Spacer()
+                
             } else {
+                Spacer()
+                
                 Button("Select Image") {
                     self.isShowingImagePicker = true
                 }
                 .padding()
+                .border(Color.blue, width: 2)
                 .sheet(isPresented: $isShowingImagePicker, onDismiss: {
                     if let image = selectedImage {
                         detectFoodDish()
@@ -431,8 +488,6 @@ struct FoodWasteView: View {
                     ImagePicker(selectedImage: $selectedImage)
                 }
             }
-
-            Spacer()
         }
         .navigationTitle("Food Waste")
         .alert(isPresented: $showingFoodAlert) {
@@ -441,32 +496,32 @@ struct FoodWasteView: View {
     }
 
     private func detectFoodDish() {
-        guard let image = selectedImage, let imageData = image.jpegData(compressionQuality: 0.5) else {
-            print("Failed to convert image to data")
-            return
-        }
+            guard let image = selectedImage, let imageData = image.jpegData(compressionQuality: 0.5) else {
+                print("Failed to convert image to data")
+                return
+            }
 
-        let headers = ["Authorization": "Bearer \(logmealAPIToken)"]
+            let headers = ["Authorization": "Bearer \(logmealAPIToken)"]
 
-        AF.upload(multipartFormData: { multipartFormData in
-            multipartFormData.append(imageData, withName: "image", fileName: "image.jpg", mimeType: "image/jpeg")
-        }, to: logmealAPIURL, headers: HTTPHeaders(headers))
-        .validate()
-        .responseJSON { response in
-            switch response.result {
-            case .success(let value):
-                if let dict = value as? [String: Any], let foodFamily = dict["foodFamily"] as? [[String: Any]], let firstFood = foodFamily.first, let name = firstFood["name"] as? String {
-                    print("Detected food: \(name)")
-                    self.foodName = name
-                    self.showingFoodAlert = true
-                } else {
-                    print("No food detected")
+            AF.upload(multipartFormData: { multipartFormData in
+                multipartFormData.append(imageData, withName: "image", fileName: "image.jpg", mimeType: "image/jpeg")
+            }, to: logmealAPIURL, headers: HTTPHeaders(headers))
+            .validate()
+            .responseJSON { response in
+                switch response.result {
+                case .success(let value):
+                    if let dict = value as? [String: Any], let foodFamily = dict["foodFamily"] as? [[String: Any]], let firstFood = foodFamily.first, let name = firstFood["name"] as? String {
+                        print("Detected food: \(name)")
+                        self.foodName = name
+                        self.showingFoodAlert = true
+                    } else {
+                        print("No food detected")
+                    }
+                case .failure(let error):
+                    print("API request failed: \(error)")
                 }
-            case .failure(let error):
-                print("API request failed: \(error)")
             }
         }
-    }
 }
 
 
@@ -496,10 +551,6 @@ struct FoodWasteItem: Identifiable {
 ///
 
 
-
-
-
-
 struct NutritionView: View {
     @Binding var nutritionInfo: String
 
@@ -507,7 +558,6 @@ struct NutritionView: View {
         Text(nutritionInfo)
     }
 }
-
 
 
 struct AboutView: View {
@@ -704,7 +754,12 @@ struct ContentView: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(maxWidth: 300, maxHeight: 300, alignment: .bottom)
                     Spacer()
-    
+                    Text("[DATA GRAPH...]")
+                            .foregroundColor(.black)
+                            .font(.title)
+                            .padding(.vertical, 20)
+                    Spacer()
+                            .frame(height: .infinity)
                         .padding(.horizontal)
                     Spacer()
                         .frame(height: .infinity)
@@ -718,18 +773,7 @@ struct ContentView: View {
 
                         HStack {
                             Spacer()
-                            Button(action: {
-                                CameraView = true
-                            }) {
-                                Image(systemName: "camera")
-                                    .font(.title)
-                                    .foregroundColor(.white)
-                                    .frame(width: 60, height: 60)
-                                    .background(Circle().foregroundColor(Color(UIColor(hex: "#eea47f"))))
-                                    .clipShape(Circle())
-                            }
-                            .padding(.trailing, 30)
-                            .padding(.bottom, 20)
+                           
                             
                             NavigationLink(destination: FoodWasteView()) {
                                 Image(systemName: "trash")
@@ -739,7 +783,7 @@ struct ContentView: View {
                                     .background(Circle().foregroundColor(Color(UIColor(hex: "#eea47f"))))
                                     .clipShape(Circle())
                             }
-                            .padding(.trailing, 30)
+                            .padding(.trailing, 50)
                             .padding(.bottom, 20)
                             .sheet(isPresented: $showingImagePicker) {
                                 ImagePicker(selectedImage: $selectedImage)
@@ -755,7 +799,7 @@ struct ContentView: View {
                                     .background(Circle().foregroundColor(Color(UIColor(hex: "#eea47f"))))
                                     .clipShape(Circle())
                             }
-                           
+                        
                             .padding(.bottom, 20)
                             Spacer()
                             
@@ -768,18 +812,20 @@ struct ContentView: View {
                                 .background(Circle().foregroundColor(Color(UIColor(hex: "#eea47f"))))
                                 .clipShape(Circle())
                             }
+                        
                             .padding(.bottom, 20)
                             Spacer()
                         } /// Close of HStack
                     }
                     Spacer()
                 }
-                .navigationBarTitle("LionFoodTracker")
+                .navigationBarTitle("")
                             .navigationBarTitleDisplayMode(.inline)
                             .font(.system(size: 30, weight: .bold, design: .default))
                             .foregroundColor(.black)
+                            .accentColor(.white) // add this line
                             .frame(maxWidth: .infinity, alignment: .center)
-                            .background(Color(UIColor(hex: "#C7F6B6")))
+                            .background(Color(UIColor(hex: "#e9ffe9")))
                             .navigationBarTitleDisplayMode(.inline)
                             .ignoresSafeArea()
                             .sheet(isPresented: $isShowingLogin) {
